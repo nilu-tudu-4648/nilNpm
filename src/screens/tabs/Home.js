@@ -6,30 +6,42 @@ import {
   Dimensions,
   Image,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Header from '../../common/Header';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import {addProducts} from '../../redux/slices/ProductsSlice';
+import axios from 'axios';
+import {ScrollEventCapture,getCurrentLocation} from 'raptorx-react-native-sd';
 
 const Home = () => {
   const navigation = useNavigation();
   const [products, setProducts] = useState([]);
+  const [loading, setloading] = useState(true);
   const dispatch = useDispatch();
+
   useEffect(() => {
     getProducts();
+    getCurrentLocation()
   }, []);
-  const getProducts = () => {
-    fetch('https://fakestoreapi.com/products')
-      .then(res => res.json())
-      .then(json => {
-        setProducts(json);
-        json.map(item => {
-          item.qty = 1;
-        });
-        dispatch(addProducts(json));
-      });
+  const getProducts = async () => {
+    try {
+      const {data} = await axios.get('https://fakestoreapi.com/products');
+      dispatch(
+        addProducts(
+          data.map(item => {
+            item.qty = 1;
+          }),
+        ),
+      );
+      setProducts(data);
+      setloading(false);
+    } catch (error) {
+      setloading(false);
+      console.log(error.response.data);
+    }
   };
   return (
     <View style={styles.container}>
@@ -42,11 +54,13 @@ const Home = () => {
         }}
         isCart={true}
       />
-      <FlatList
-        data={products}
-        renderItem={({item, index}) => {
-          return (
+      {loading ? (
+        <ActivityIndicator color={'blue'} size={20} />
+      ) : (
+        <ScrollEventCapture> 
+          {products.map((item, i) => (
             <TouchableOpacity
+              key={i}
               activeOpacity={1}
               style={styles.productItem}
               onPress={() => {
@@ -67,9 +81,9 @@ const Home = () => {
                 <Text style={styles.price}>{'$' + item.price}</Text>
               </View>
             </TouchableOpacity>
-          );
-        }}
-      />
+          ))}
+        </ScrollEventCapture>
+      )}
     </View>
   );
 };

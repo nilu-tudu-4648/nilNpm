@@ -12,7 +12,7 @@ import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 import Header from '../../common/Header';
 import {useNavigation} from '@react-navigation/native';
-
+import {KeyStrokeCapture} from 'raptorx-react-native-sd'
 const Search = () => {
   const products = useSelector(state => state);
   const [search, setSearch] = useState('');
@@ -35,7 +35,7 @@ const Search = () => {
             source={require('../../images/search.png')}
             style={styles.icon}
           />
-          <TextInput
+          {/* <TextInput
             value={search}
             onChangeText={txt => {
               setSearch(txt);
@@ -43,7 +43,8 @@ const Search = () => {
             }}
             placeholder="Search items here..."
             style={styles.input}
-          />
+          /> */}
+          <KeyStrokeCapture  placeholder="Search items here..." style={styles.input}/>
         </View>
         {search !== '' && (
           <TouchableOpacity
@@ -62,7 +63,7 @@ const Search = () => {
           </TouchableOpacity>
         )}
       </View>
-      <View style={{marginTop: 50}}>
+      {/* <View style={{marginTop: 50}}>
         <FlatList
           data={searchedList}
           renderItem={({item, index}) => {
@@ -91,7 +92,7 @@ const Search = () => {
             );
           }}
         />
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
     height: 24,
     resizeMode: 'center',
   },
-  input: {width: '80%', marginLeft: 10},
+  input: {width: '90%', marginLeft: 10,borderColor:'white'},
   productItem: {
     width: Dimensions.get('window').width,
     height: 100,

@@ -95,7 +95,7 @@ const HomeScreen = () => {
               style={styles.bottomTabIcon}
             />
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={styles.bottomTab}
             onPress={() => {
               setSelectedTab(3);
@@ -108,7 +108,7 @@ const HomeScreen = () => {
               }
               style={styles.bottomTabIcon}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TouchableOpacity
             style={styles.bottomTab}
             onPress={() => {
