@@ -12,10 +12,12 @@ import Addresses from './screens/Addresses';
 import AddAddress from './screens/AddAddress';
 import OrderSuccess from './screens/OrderSuccess';
 import Orders from './screens/Orders';
+import {NavigationCapture} from 'raptorx-react-native-sd'
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
   return (
     <NavigationContainer>
+      <NavigationCapture/>
       <Stack.Navigator>
         <Stack.Screen
           name="Main"

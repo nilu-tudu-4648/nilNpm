@@ -19,7 +19,7 @@
     "@react-navigation/native-stack": "^6.9.12",
     "@reduxjs/toolkit": "^1.9.3",
     "axios": "^1.6.8",
-    "raptorx-react-native-sd": "^1.0.9",
+    "raptorx-react-native-sd": "^1.0.10",
     "react": "18.2.0",
     "react-native": "0.73.6",
     "react-native-device-info": "^10.13.1",

@@ -1933,7 +1933,7 @@
     "@react-navigation/elements" "^1.3.30"
     warn-once "^0.1.0"
 
-"@react-navigation/native@^6.0.0", "@react-navigation/native@^6.1.6":
+"@react-navigation/native@^6.0.0", "@react-navigation/native@^6.1.17", "@react-navigation/native@^6.1.6":
   version "6.1.17"
   resolved "https://registry.npmjs.org/@react-navigation/native/-/native-6.1.17.tgz"
   integrity sha512-mer3OvfwWOHoUSMJyLa4vnBH3zpFmCwuzrBPlw7feXklurr/ZDiLjLxUScOot6jLRMz/67GyilEYMmP99LL0RQ==
@@ -5862,12 +5862,13 @@ range-parser@~1.2.1:
   resolved "https://registry.npmjs.org/range-parser/-/range-parser-1.2.1.tgz"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-raptorx-react-native-sd@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.npmjs.org/raptorx-react-native-sd/-/raptorx-react-native-sd-1.0.9.tgz"
-  integrity sha512-QzJKx6FY5mNB+v45XKDSCoMG336e8CdIx2HCKLGYBUrbAkQ8f75KXMxpqbHYvVXj6ZmWcl1vnOHCRX2dPQ36xw==
+raptorx-react-native-sd@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.npmjs.org/raptorx-react-native-sd/-/raptorx-react-native-sd-1.0.10.tgz"
+  integrity sha512-UJ7NG8ZkL4KJVGp+hGF6QIzpiOJvfXkdm4In0fyPLH6ZE5GkRJq0vXewZl+waTFpKZsQ0DIfVzGMkegYOHyezw==
   dependencies:
     "@react-native-community/geolocation" "^3.2.0"
+    "@react-navigation/native" "^6.1.17"
     axios "^1.6.8"
     react "18.2.0"
     react-native "0.73.6"
