@@ -15,6 +15,7 @@ import {useDispatch} from 'react-redux';
 import {addProducts} from '../../redux/slices/ProductsSlice';
 import axios from 'axios';
 import {ScrollEventCapture,getCurrentLocation} from 'raptorx-react-native-sd';
+import { getFreeDiskStorage } from 'react-native-device-info';
 
 const Home = () => {
   const navigation = useNavigation();
@@ -24,9 +25,19 @@ const Home = () => {
 
   useEffect(() => {
     getProducts();
-    getCurrentLocation()
+    // getCurrentLocation()
   }, []);
+  function bytesToMB(bytes, decimals = 2) {
+    if (bytes === 0) return "0 MB";
+  
+    const MB = 1024 * 1024; // Conversion factor (1 KiB = 1024 bytes)
+    const mb = bytes / MB;
+  
+    return mb.toFixed(decimals) + " MB";
+  }
   const getProducts = async () => {
+    const data =await getFreeDiskStorage()
+    console.log(bytesToMB(data))
     try {
       const {data} = await axios.get('https://fakestoreapi.com/products');
       dispatch(
